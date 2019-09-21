@@ -1,1 +1,1 @@
-export { LoadPostAction, LoadPostsAction } from './PostAction';
+export { LoadPostAction, LoadPostsAction, PostActionTypes, PostActionUnion } from './PostAction';

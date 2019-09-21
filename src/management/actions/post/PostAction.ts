@@ -21,3 +21,5 @@ export class LoadPostsAction implements Action {
   }) {
   }
 }
+
+export type PostActionUnion = LoadPostAction | LoadPostsAction;
