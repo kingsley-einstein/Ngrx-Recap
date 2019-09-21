@@ -8,7 +8,7 @@ export enum PostActionTypes {
 
 export class LoadPostAction implements Action {
   readonly type = PostActionTypes.LoadPost
-  constructor(payload: {
+  constructor(public payload: {
     data: Post
   }) {
   }
@@ -16,7 +16,7 @@ export class LoadPostAction implements Action {
 
 export class LoadPostsAction implements Action {
   readonly type = PostActionTypes.LoadPosts
-  constructor(payload: {
+  constructor(public payload: {
     data: Post[]
   }) {
   }

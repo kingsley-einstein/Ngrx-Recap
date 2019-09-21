@@ -18,4 +18,4 @@ export default (state: UserState = initialUserState, action: UserActionUnion) : 
     default:
       return state;
   }
-}
+};
