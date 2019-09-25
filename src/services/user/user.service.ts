@@ -18,8 +18,8 @@ export class UserService {
     db.push(user);
   }
 
-  delete(user: User) : void {
-    const { db } = this;
+  delete(user: User, deleteAssociations: boolean = true) : void {
+    const { db, postService } = this;
     const exists = db.some((value) => {
       return value.email === user.email;
     });
@@ -27,6 +27,9 @@ export class UserService {
       throw new Error("User with that email doesn't exist");
     }
     db.splice(db.indexOf(user), 1);
+    if (deleteAssociations) {
+      postService.deleteByUser(user);
+    }
   }
 
   getByEmail(email: string) : User | null {
@@ -36,7 +39,7 @@ export class UserService {
     });
   }
 
-  updateUser(user: User, cascade: boolean = true) : void {
+  updateUser(user: User, updateAssociations: boolean = true) : void {
     const { db, postService } = this;
     const exists = db.some((value) => {
       return value.email === user.email;
@@ -49,7 +52,7 @@ export class UserService {
     });
     const index = db.indexOf(userToReplace);
     db.splice(index, 1, user);
-    if (cascade) {
+    if (updateAssociations) {
       postService.updateUser(user);
     }
   }

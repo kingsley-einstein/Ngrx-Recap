@@ -58,7 +58,7 @@ export class PostService {
     });
   }
 
-  delete(post: Post) {
+  delete(post: Post) : void {
     const { db } = this;
     const exists = db.some((value) => {
       return value.id === post.id;
@@ -67,5 +67,19 @@ export class PostService {
       throw new Error('That post does not exist');
     }
     db.splice(db.indexOf(post), 1);
+  }
+
+  deleteByUser(user: User) : void {
+    const { db } = this;
+    db.forEach((value) => {
+      if (value.author.email === user.email) {
+        db.splice(db.indexOf(value), 1);
+      }
+    });
+  }
+
+  getDb() : Post[] {
+    const { db } = this;
+    return db;
   }
 }
