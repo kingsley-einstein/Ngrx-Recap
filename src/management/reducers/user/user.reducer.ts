@@ -7,13 +7,13 @@ export default (state: UserState = initialUserState, action: UserActionUnion) : 
   switch (action.type) {
     case UserActionTypes.LoadUser:
       return {
-        data: action.payload.data,
-        users: null
+        ...state,
+        data: action.payload.data
       };
     case UserActionTypes.LoadUsers:
       return {
-        users: action.payload.data,
-        data: null
+        ...state,
+        users: action.payload.data
       };
     default:
       return state;

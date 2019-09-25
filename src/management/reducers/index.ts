@@ -1,1 +1,1 @@
-
+export { appReducers } from './app';

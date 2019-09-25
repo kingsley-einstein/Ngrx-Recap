@@ -5,13 +5,13 @@ export default (state: PostState = initialPostState, action: PostActionUnion) : 
   switch (action.type) {
     case PostActionTypes.LoadPost:
       return {
-        data: action.payload.data,
-        posts: null
+        ...state,
+        data: action.payload.data
       };
     case PostActionTypes.LoadPosts:
       return {
-        posts: action.payload.data,
-        data: null
+        ...state,
+        posts: action.payload.data
       };
     default:
       return state;
