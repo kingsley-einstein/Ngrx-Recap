@@ -10,7 +10,7 @@ export class LoadPostAction implements Action {
   readonly type = PostActionTypes.LoadPost
   constructor(public payload: {
     data: Post
-  }) {
+  } = { data: null }) {
   }
 }
 
@@ -18,7 +18,7 @@ export class LoadPostsAction implements Action {
   readonly type = PostActionTypes.LoadPosts
   constructor(public payload: {
     data: Post[]
-  }) {
+  } = { data: [] }) {
   }
 }
 

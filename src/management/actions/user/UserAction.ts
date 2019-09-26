@@ -10,7 +10,7 @@ export class LoadUserAction implements Action {
   readonly type = UserActionTypes.LoadUser;
   constructor(public payload: {
     data: User
-  }) {
+  } = { data: null }) {
   }
 }
 
@@ -18,7 +18,7 @@ export class LoadUsersAction implements Action {
   readonly type = UserActionTypes.LoadUsers;
   constructor(public payload: {
     data: User[]
-  }) {
+  } = { data: [] }) {
   }
 }
 
