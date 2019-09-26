@@ -3,7 +3,7 @@ import { Actions, Effect, ofType } from '@ngrx/effects';
 import { Store, select } from '@ngrx/store';
 import { of } from 'rxjs';
 import { switchMap, withLatestFrom, map } from 'rxjs/operators';
-import { LoadUserAction, LoadUsersAction, UserActionTypes } from '../../actions';
+import { LoadUserAction, LoadUsersAction, LoadUserActionPing, LoadUsersActionPing, UserActionTypes } from '../../actions';
 import { AppState } from '../../states';
 import { UserService } from '../../../services';
 import { selectUsers } from '../../selectors';
@@ -12,11 +12,11 @@ import { selectUsers } from '../../selectors';
 export class UserEffects {
   @Effect()
   getUser$ = this.actions$.pipe(
-    ofType<LoadUserAction>(UserActionTypes.LoadUser),
-    map((action) => action.payload.data),
+    ofType<LoadUserActionPing>(UserActionTypes.LoadUserPing),
+    map((action) => action.payload),
     withLatestFrom(this.store$.pipe(select(selectUsers))),
-    switchMap(([user, users]) => {
-      const data = this.service.getByEmail(user.email);
+    switchMap(([email, users]) => {
+      const data = this.service.getByEmail(email);
       return of(new LoadUserAction({
         data
       }));
@@ -25,7 +25,7 @@ export class UserEffects {
 
   @Effect()
   getUsers$ = this.actions$.pipe(
-    ofType<LoadUsersAction>(UserActionTypes.LoadUsers),
+    ofType<LoadUsersActionPing>(UserActionTypes.LoadUsersPing),
     switchMap(() => of(new LoadUsersAction({
       data: this.service.getDb()
     })))

@@ -1,1 +1,1 @@
-export { Homepage } from './homepage';
+export { AddUserComponent } from './add-user';

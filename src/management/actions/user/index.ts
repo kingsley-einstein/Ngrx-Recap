@@ -1,1 +1,1 @@
-export { LoadUserAction, LoadUsersAction, UserActionTypes, UserActionUnion } from './UserAction';
+export { LoadUserAction, LoadUsersAction, LoadUserActionPing, LoadUsersActionPing, UserActionTypes, UserActionUnion } from './UserAction';
