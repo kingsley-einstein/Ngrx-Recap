@@ -1,0 +1,12 @@
+a {
+  text-align: center;
+  margin: 2px;
+}
+
+.flexed {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+  padding: 8%;
+}

@@ -1,16 +1,15 @@
 import { Injectable } from '@angular/core';
 import { Post, User } from '../../models';
-import { UserService } from '../user';
 
 let id: number = 1;
 
 @Injectable()
 export class PostService {
   public db: Post[] = [];
-  constructor(private userService: UserService) {}
+  constructor() {}
 
-  insert(email: string, title: string, content: string) : void {
-    const { db, userService } = this;
+  insert(author: User, title: string, content: string) : void {
+    const { db } = this;
     if (title.length < 4) {
       throw new Error('Length of title should be at least 4 characters');
     }
@@ -22,7 +21,7 @@ export class PostService {
       title,
       content,
       createdAt: new Date(),
-      author: userService.getByEmail(email)
+      author
     });
     id++;
   }
@@ -50,10 +49,10 @@ export class PostService {
   }
 
   updateUser(user: User) : void {
-    const { db, userService } = this;
+    const { db } = this;
     db.forEach((value) => {
       if (value.author.email === user.email) {
-        value.author = userService.getByEmail(user.email);
+        value.author = user;
       }
     });
   }

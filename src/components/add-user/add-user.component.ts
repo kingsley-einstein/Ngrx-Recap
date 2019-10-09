@@ -17,7 +17,7 @@ export class AddUserComponent implements OnInit {
     Validators.email,
     Validators.minLength(8)
   ]);
-  dob: FormControl = new FormControl(new Date(), Validators.required);
+  dob: FormControl = new FormControl('', Validators.required);
 
   constructor(fb: FormBuilder, private userService: UserService, private toast: SnackBarUtil) {
     this.fg = fb.group({
@@ -37,6 +37,7 @@ export class AddUserComponent implements OnInit {
     event.preventDefault();
     try {
       this.userService.insert(fg.value);
+      console.log(this.userService.getDb());
       this.toast.open('Successfully inserted user', 3);
     } catch (error) {
       this.toast.open(error.message, 3);

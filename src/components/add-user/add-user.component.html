@@ -1,0 +1,17 @@
+<form [formGroup]="fg" (submit)="addUser($event)">
+  <mat-form-field>
+    <input type="text" matInput placeholder="First Name" formControlName="firstName">
+  </mat-form-field>
+  <mat-form-field>
+    <input type="text" matInput placeholder="Last Name" formControlName="lastName">
+  </mat-form-field>
+  <mat-form-field>
+    <input type="email" matInput placeholder="Email" formControlName="email">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput [matDatepicker]="picker" placeholder="Select Date" formControlName="dob">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+  <button mat-raised-button color="primary" [disabled]="fg.invalid">Add User</button>
+</form>
