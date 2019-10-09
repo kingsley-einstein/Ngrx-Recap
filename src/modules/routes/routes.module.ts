@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router'
-import { AddUserComponent, ListUsersComponent } from '../../components';
+import { AddUserComponent, ListUsersComponent, AddPostComponent, ListPostsComponent } from '../../components';
 
 const routes: Routes = [
   {
@@ -15,6 +15,14 @@ const routes: Routes = [
   {
     path: 'users',
     component: ListUsersComponent
+  },
+  {
+    path: 'add-post',
+    component: AddPostComponent
+  },
+  {
+    path: 'list-posts',
+    component: ListPostsComponent
   }
 ];
 

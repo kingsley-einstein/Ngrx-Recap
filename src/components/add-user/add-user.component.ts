@@ -37,6 +37,7 @@ export class AddUserComponent implements OnInit {
     event.preventDefault();
     try {
       this.userService.insert(fg.value);
+      fg.reset();
       console.log(this.userService.getDb());
       this.toast.open('Successfully inserted user', 3);
     } catch (error) {

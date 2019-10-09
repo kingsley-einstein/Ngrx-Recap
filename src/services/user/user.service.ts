@@ -32,11 +32,15 @@ export class UserService {
     }
   }
 
-  getByEmail(email: string) : User | null {
+  getByEmail(email: string) : User {
     const { db } = this;
-    return db.find((value) => {
+    const user = db.find((value) => {
       return value.email === email;
     });
+    if (!user) {
+      throw new Error('User not found');
+    }
+    return user;
   }
 
   updateUser(user: User, updateAssociations: boolean = true) : void {

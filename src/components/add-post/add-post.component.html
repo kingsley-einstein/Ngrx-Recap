@@ -1,0 +1,12 @@
+<form [formGroup]="fg" (submit)="addPost($event)">
+  <mat-form-field>
+    <input type="text" matInput formControlName="title" placeholder="Enter Post Title">
+  </mat-form-field>
+  <mat-form-field>
+    <textarea matInput formControlName="content" placeholder="Enter Post Content"></textarea>
+  </mat-form-field>
+  <mat-form-field>
+    <input type="email" matInput formControlName="author" placeholder="Enter Author's Email">
+  </mat-form-field>
+  <button mat-raised-button color="primary" [disabled]="fg.invalid">Create</button>
+</form>

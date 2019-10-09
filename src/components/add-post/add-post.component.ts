@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { PostService, UserService } from '../../services';
 import { SnackBarUtil } from '../../utils';
@@ -8,7 +8,7 @@ import { SnackBarUtil } from '../../utils';
   templateUrl: './add-post.component.html',
   styleUrls: ['./add-post.component.css']
 })
-export class AddPostComponent {
+export class AddPostComponent implements OnInit {
   fg: FormGroup;
   title: FormControl = new FormControl('', [
     Validators.required,
@@ -32,6 +32,10 @@ export class AddPostComponent {
     });
   }
 
+  ngOnInit() {
+    console.log('[AddPostComponent] initialised');
+  }
+
   addPost(event: Event) {
     try {
       const {
@@ -45,6 +49,8 @@ export class AddPostComponent {
         value.title,
         value.content
       );
+      this.fg.reset();
+      console.log(this.postService.getDb());
       this.toast.open('Post successfully created', 3);
     } catch (error) {
       this.toast.open(error.message, 3);
