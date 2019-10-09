@@ -15,6 +15,12 @@
     <th mat-header-cell *matHeaderCellDef>Birth Date</th>
     <td mat-cell *matCellDef="let user">{{user.dob}}</td>
   </ng-container>
+  <ng-container matColumnDef="action">
+    <th mat-header-cell *matHeaderCellDef>Action</th>
+    <td mat-cell *matCellDef="let user">
+      <button mat-raised-button color="accent" (click)="display(user)">View User</button>
+    </td>
+  </ng-container>
   <tr mat-header-row *matHeaderRowDef="columns$"></tr>
   <tr mat-row *matRowDef="let row; columns: columns$;"></tr>
 </table>

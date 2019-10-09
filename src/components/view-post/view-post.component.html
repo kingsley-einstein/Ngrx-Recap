@@ -1,0 +1,10 @@
+<div class="flexed" *ngIf="post$ | async as post">
+  <div class="inner-flexed">
+    <div><b>Title:</b> {{post.title}} | <b>Author:</b> {{post.author.firstName}} {{post.author.lastName}} | <b>ID:</b> {{post.id}} | <b>Created:</b> {{post.createdAt}}</div>
+    <div>
+      <article>
+        {{post.content}}
+      </article>
+    </div>
+  </div>
+</div>

@@ -9,7 +9,7 @@ import { AppComponent } from './app.component';
 
 import { MaterialModule, FormModule, RoutingModule } from '../modules';
 
-import { AddUserComponent, ListUsersComponent, AddPostComponent, ListPostsComponent } from '../components';
+import { AddUserComponent, ListUsersComponent, AddPostComponent, ListPostsComponent, ViewUserComponent, ViewPostComponent } from '../components';
 
 import { appReducers } from '../management/reducers';
 import { UserEffects, PostEffects } from '../management/effects';
@@ -26,7 +26,9 @@ import { environment } from '../environments/environment';
     AddUserComponent,
     ListUsersComponent,
     AddPostComponent,
-    ListPostsComponent
+    ListPostsComponent,
+    ViewUserComponent,
+    ViewPostComponent
   ],
   imports: [
     BrowserModule,

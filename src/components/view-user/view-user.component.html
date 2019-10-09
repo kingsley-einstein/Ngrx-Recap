@@ -1,0 +1,9 @@
+<div class="flexed" *ngIf="user$ | async as user">
+  <div class="inner-flexed">
+    <ul>
+      <li>Name: {{user.firstName}} {{user.lastName}}</li>
+      <li>Email: {{user.email}}</li>
+      <li>D.O.B: {{user.dob}}</li>
+    </ul>
+  </div>
+</div>
